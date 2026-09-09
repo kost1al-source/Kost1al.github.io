@@ -1,30 +1,1040 @@
-<!doctype html>
-<html lang="ru">
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#101211">
-  <meta name="description" content="Kost1al — Костя. Разработчик, создатель проектов и владелец DAY X REFORGED и Kost1al 3D."><link rel="canonical" href="https://kost1al.github.io/">
-  <meta property="og:type" content="website"><meta property="og:title" content="Kost1al — Костя | Разработчик и создатель"><meta property="og:description" content="Создаю цифровые продукты, игровые проекты и собственные технологические решения."><meta property="og:url" content="https://kost1al.github.io/">
-  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Kost1al — Костя | Разработчик и создатель"><meta name="twitter:description" content="Создаю цифровые продукты, игровые проекты и собственные технологические решения.">
-  <title>Kost1al — Костя | Разработчик и создатель</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Kostiantyn Babak","alternateName":["Kost1al","Костя"],"url":"https://kost1al.github.io/","sameAs":["https://github.com/kost1al-source","https://t.me/DayXReforged","https://www.instagram.com/kost1al3d/?hl=en"],"knowsAbout":["Python","Java","C#","JavaScript","Minecraft Development","3D Printing","3D Modeling"]}</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kost1al | Programmer & Developer — Portfolio</title>
+    <meta name="description" content="Персональное портфолио разработчика Kost1al (Костя). Разработка Minecraft проектов, серверная инфраструктура, веб-разработка, 3D и флагманский проект Day X Reforged.">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href="https://kost1al.github.io/">
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Kost1al | Programmer & Developer">
+    <meta property="og:description" content="Разработка игровых систем, серверная архитектура и комплексные Minecraft-проекты. Флагман Day X Reforged.">
+    <meta property="og:url" content="https://kost1al.github.io/">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f6f7f8',
+                            100: '#eef0f2',
+                            200: '#dadfe4',
+                            300: '#bcc5cd',
+                            400: '#97a3af',
+                            500: '#798794',
+                            600: '#616d7a',
+                            700: '#4f5863',
+                            800: '#434a53',
+                            900: '#3a3f46',
+                            950: '#090a0b',
+                        },
+                        surface: {
+                            DEFAULT: '#0f1113',
+                            light: '#16191c',
+                            lighter: '#1f2327',
+                            border: '#282d33',
+                            hover: '#333941'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        ::selection {
+            background-color: #e5e7eb;
+            color: #090a0b;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090a0b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #282d33;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #434a53;
+        }
+
+        .grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        .terminal-glow {
+            box-shadow: 0 0 35px -10px rgba(255, 255, 255, 0.07);
+        }
+
+        .card-glow:hover {
+            box-shadow: 0 0 25px -5px rgba(52, 211, 153, 0.12);
+        }
+
+        /* Lightbox modal animation */
+        #lightbox {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+        #lightbox.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        #lightbox.open #lightbox-img {
+            transform: scale(1);
+        }
+        #lightbox-img {
+            transform: scale(0.96);
+            transition: transform 0.25s ease;
+        }
+    </style>
 </head>
-<body>
-  <header class="header"><a class="logo" href="#home">Kost1al<span>.</span></a><button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false"><i></i><i></i></button><nav class="nav" aria-label="Основная навигация"><a href="#about">Обо мне</a><a href="#projects">Проекты</a><a href="#skills">Навыки</a><a href="#gallery">Галерея</a><a href="#contact">Контакты</a></nav><a class="talk-link" href="#contact">Связаться <span>↗</span></a></header>
-  <main>
-    <section class="hero" id="home"><div class="hero-copy reveal"><p class="overline"><span></span> Личный бренд / Разработчик</p><h1>Kost1al</h1><p class="hero-name">Костя</p><p class="hero-role">Разработчик <b>•</b> Создатель <b>•</b> Владелец проектов</p><p class="hero-lead">Создаю цифровые продукты, игровые проекты и собственные технологические решения.</p><p class="hero-detail">Развиваю DAY X REFORGED и Kost1al 3D, изучаю программирование и создаю собственные проекты от идеи до реализации.</p><div class="actions"><a class="button button-dark" href="#projects">Смотреть проекты <span>↗</span></a><a class="button button-outline" href="#contact">Связаться <span>↗</span></a></div></div><div class="hero-side reveal"><div class="portrait-mark">K<span>1</span></div><div class="side-note"><span>01</span><p>Идеи<br>в реальные<br>проекты</p></div><div class="side-line"></div></div><div class="hero-bottom"><span>Листайте дальше</span><span>© 2026</span></div></section>
-    <section class="section about" id="about"><div class="section-title reveal"><span class="number">01</span><div><p class="label">Немного обо мне</p><h2>Обо мне</h2></div></div><div class="about-grid"><div class="about-quote reveal">Работаю над идеями, которые хочется довести до результата.</div><div class="about-text reveal"><p>Меня зовут Костя, а в интернете я использую имя Kost1al.</p><p>Я занимаюсь программированием, разработкой Minecraft-проектов, серверной инфраструктурой и созданием собственных цифровых решений.</p><p>Мне нравится самостоятельно превращать идеи в работающие проекты — от первоначальной концепции и дизайна до программирования и запуска.</p><p>Сейчас я развиваю несколько собственных направлений, среди которых <strong>DAY X REFORGED</strong> и <strong>Kost1al 3D</strong>.</p></div></div><div class="about-tags reveal"><span>Разработчик</span><span>Владелец проектов</span><span>Создатель</span></div></section>
-    <section class="section projects" id="projects"><div class="section-title reveal"><span class="number">02</span><div><p class="label">Избранные проекты</p><h2>Проекты</h2></div></div><div class="project-grid">
-      <!-- Ссылка DAY X REFORGED: Telegram. --><article class="project-card reveal"><div class="card-top"><span>01</span><span class="card-arrow">↗</span></div><div class="card-decor decor-orange"></div><div class="card-body"><p class="category">Игры <i>•</i> Разработка</p><h3>DAY X<br>REFORGED</h3><p>Игровой проект, который я создаю и развиваю. Проект включает Minecraft-сервер, собственные игровые механики, модификации, инфраструктуру и уникальный игровой мир.</p><div class="card-footer"><span>Владелец и разработчик</span><a href="https://t.me/DayXReforged" target="_blank" rel="noreferrer">Смотреть проект <b>↗</b></a></div></div></article>
-      <!-- Ссылка Kost1al 3D: Instagram. --><article class="project-card reveal"><div class="card-top"><span>02</span><span class="card-arrow">↗</span></div><div class="card-decor decor-blue"></div><div class="card-body"><p class="category">3D-печать</p><h3>Kost1al<br>3D</h3><p>Небольшое направление, связанное с 3D-печатью, созданием моделей, фигурок, брелоков и других изделий.</p><div class="card-footer"><span>Основатель</span><a href="https://www.instagram.com/kost1al3d/?hl=en" target="_blank" rel="noreferrer">Смотреть проект <b>↗</b></a></div></div></article>
-      <article class="project-card reveal"><div class="card-top"><span>03</span><span class="card-arrow">↗</span></div><div class="card-decor decor-green"></div><div class="card-body"><p class="category">Разработка</p><h3>Личные<br>проекты</h3><p>Экспериментальные программы, технические решения и проекты, которые я создаю для изучения новых технологий и развития навыков.</p><div class="card-footer"><span>Эксперименты и код</span><a href="https://github.com/kost1al-source" target="_blank" rel="noreferrer">Смотреть код <b>↗</b></a></div></div></article>
-    </div></section>
-    <section class="dark-section" id="dayx"><div class="dark-inner reveal"><div><p class="label">Избранный проект / 01</p><h2>DAY X<br><em>REFORGED</em></h2><p class="dark-subtitle">Мой основной игровой проект</p></div><div class="dark-description"><p>DAY X REFORGED — проект, который я создаю и развиваю как разработчик и владелец проекта.</p><p>Основная концепция проекта — создание собственного игрового опыта с уникальными механиками, системой сервера, игровым миром и дополнительными возможностями.</p><a class="light-link" href="https://t.me/DayXReforged" target="_blank" rel="noreferrer">Смотреть проект <span>↗</span></a></div></div></section>
-    <section class="section skills" id="skills"><div class="section-title reveal"><span class="number">03</span><div><p class="label">Мой инструментарий</p><h2>Навыки и<br>технологии</h2></div></div><div class="skills-list reveal"><span>Python</span><span>Java</span><span>C#</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Разработка Minecraft</span><span>Администрирование серверов</span><span>Git</span><span>GitHub</span><span>3D-печать</span><span>3D-моделирование</span></div></section>
-    <section class="services section"><div class="section-title reveal"><span class="number">04</span><div><p class="label">Основные направления</p><h2>Чем я занимаюсь</h2></div></div><div class="service-grid"><article class="service reveal"><span class="service-number">01</span><h3>Разработка</h3><p>Разработка программ и цифровых решений.</p><span class="service-icon">＋</span></article><article class="service reveal"><span class="service-number">02</span><h3>Разработка<br>Minecraft</h3><p>Создание игровых механик, серверов и игровых проектов.</p><span class="service-icon">＋</span></article><article class="service reveal"><span class="service-number">03</span><h3>Развитие<br>проектов</h3><p>Разработка собственных проектов от идеи до реализации.</p><span class="service-icon">＋</span></article><article class="service reveal"><span class="service-number">04</span><h3>3D-печать</h3><p>Создание физических изделий с использованием 3D-печати.</p><span class="service-icon">＋</span></article></div></section>
-    <section class="section gallery" id="gallery"><div class="section-title reveal"><span class="number">05</span><div><p class="label">Личный архив</p><h2>Галерея</h2></div></div><div class="photo-grid" id="photo-grid"></div><p class="empty-state" id="gallery-empty">Добавьте фотографии в <code>assets/photos/</code>, чтобы они появились здесь.</p></section>
-    <section class="github-section"><div class="github-inner reveal"><div><p class="label">Открытый код</p><h2>GitHub</h2><p>Здесь можно посмотреть мой код, проекты и эксперименты.</p></div><div class="github-right"><strong>@kost1al-source</strong><a class="button button-light" href="https://github.com/kost1al-source" target="_blank" rel="noreferrer">Открыть GitHub <span>↗</span></a></div></div></section>
-    <section class="contact section" id="contact"><div class="contact-inner reveal"><p class="label">Связаться со мной</p><h2>Давайте<br><em>работать вместе.</em></h2><p>Есть идея, проект или вопрос? Связаться со мной можно через публичные контакты.</p><div class="actions"><a class="button button-dark" href="https://github.com/kost1al-source" target="_blank" rel="noreferrer">GitHub <span>↗</span></a><a class="button button-outline" href="mailto:babakkosta666@gmail.com">Email <span>↗</span></a></div></div></section>
-  </main>
-  <footer class="footer"><a class="logo" href="#home">Kost1al<span>.</span></a><span>Костя</span><span>© 2026 Kost1al</span><a href="#home">Наверх ↑</a></footer>
-  <div class="lightbox" id="lightbox" aria-hidden="true"><button class="close" aria-label="Закрыть">×</button><button class="prev" aria-label="Предыдущее фото">‹</button><img alt="Kost1al — Костя"><button class="next" aria-label="Следующее фото">›</button></div><script src="script.js"></script>
-</body></html>
+<body class="bg-[#090a0b] text-zinc-300 font-sans antialiased selection:bg-zinc-200 selection:text-zinc-950 min-h-screen flex flex-col justify-between relative overflow-x-hidden">
+
+    <!-- Ambient Grid & Canvas Background -->
+    <div class="fixed inset-0 grid-pattern pointer-events-none z-0"></div>
+    <canvas id="canvas-bg" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Top Navigation -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#090a0b]/85 border-b border-surface-border">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-2.5 group">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 group-hover:scale-125 transition-transform"></span>
+                <span class="font-mono text-base font-bold tracking-tight text-white">Kost1al</span>
+                <span class="text-xs font-mono text-zinc-400 bg-surface-lighter px-2 py-0.5 rounded border border-surface-border">DEV</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-zinc-300">
+                <a href="#about" class="hover:text-white transition-colors">О разработчике</a>
+                <a href="#skills" class="hover:text-white transition-colors">Навыки</a>
+                <a href="#featured" class="hover:text-white flex items-center gap-1.5 transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    Day X Reforged
+                </a>
+                <a href="#gallery" class="hover:text-white transition-colors">Галерея</a>
+                <a href="#projects" class="hover:text-white transition-colors">Проекты</a>
+                <a href="#timeline" class="hover:text-white transition-colors">Этапы</a>
+                <a href="#contact" class="hover:text-white transition-colors">Контакты</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3">
+                <a href="https://github.com/kost1al-source" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-md border border-surface-border bg-surface hover:bg-surface-lighter text-zinc-300 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                </a>
+                <a href="#contact" class="text-xs font-mono px-3.5 py-1.5 rounded-md bg-zinc-100 text-zinc-950 font-semibold hover:bg-white hover:shadow-lg transition-all">
+                    Связаться
+                </a>
+                <!-- Mobile menu toggle -->
+                <button id="mobile-toggle" aria-label="Open Menu" class="md:hidden p-1.5 text-zinc-400 hover:text-white rounded border border-surface-border bg-surface">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-surface-border bg-surface px-4 py-4 flex-col gap-3 font-mono text-sm">
+            <a href="#about" class="py-1 text-zinc-300 hover:text-white">О разработчике</a>
+            <a href="#skills" class="py-1 text-zinc-300 hover:text-white">Навыки</a>
+            <a href="#featured" class="py-1 text-emerald-400 font-semibold">Day X Reforged</a>
+            <a href="#gallery" class="py-1 text-zinc-300 hover:text-white">Галерея</a>
+            <a href="#projects" class="py-1 text-zinc-300 hover:text-white">Проекты</a>
+            <a href="#timeline" class="py-1 text-zinc-300 hover:text-white">Этапы разработки</a>
+            <a href="#contact" class="py-1 text-zinc-300 hover:text-white">Контакты</a>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+
+        <!-- 1. HERO SECTION WITH DEVELOPER PHOTO -->
+        <section id="hero" class="pt-16 pb-20 md:pt-28 md:pb-32 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- Left Column: Bio & CTAs -->
+                <div class="lg:col-span-7">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-surface-border bg-surface/80 text-xs font-mono text-zinc-300 mb-6">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Открыт к разработке и интеграциям</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-4">
+                        Kost1al
+                    </h1>
+
+                    <p class="text-xl sm:text-2xl font-mono text-zinc-300 font-medium mb-4 flex items-center gap-3">
+                        <span>Programmer & Developer</span>
+                        <span class="text-xs font-normal text-zinc-500 bg-surface px-2.5 py-0.5 rounded border border-surface-border font-mono hidden sm:inline-block">Костя</span>
+                    </p>
+
+                    <p class="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-xl mb-6">
+                        Разработка игровых систем, серверная архитектура и комплексные Minecraft-проекты. Весь цикл: от базового кода до боевого продакшена.
+                    </p>
+
+                    <!-- Status line tags -->
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs font-mono text-zinc-400 mb-8">
+                        <span class="bg-surface px-3 py-1.5 rounded border border-surface-border flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                            Minecraft Server Dev
+                        </span>
+                        <span class="bg-surface px-3 py-1.5 rounded border border-surface-border">Forge 1.20.1</span>
+                        <span class="bg-surface px-3 py-1.5 rounded border border-surface-border">Full-Stack & Systems</span>
+                    </div>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-wrap items-center gap-4">
+                        <a href="#featured" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-zinc-100 text-zinc-950 font-mono text-sm font-bold hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md">
+                            <span>VIEW PROJECT</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                        </a>
+                        
+                        <a href="#contact" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-surface hover:bg-surface-lighter text-zinc-200 border border-surface-border font-mono text-sm font-semibold hover:border-zinc-500 transition-all">
+                            <span>CONTACT</span>
+                        </a>
+
+                        <a href="https://github.com/kost1al-source" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-lg text-zinc-400 hover:text-white font-mono text-sm transition-colors">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            <span>GitHub Profile</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Developer Photo Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm rounded-2xl border border-surface-border bg-surface p-3 terminal-glow group">
+                        <!-- Top status bar -->
+                        <div class="flex items-center justify-between px-3 py-2 border-b border-surface-border font-mono text-xs text-zinc-400 mb-3">
+                            <span class="flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span>DEV // KOST1AL</span>
+                            </span>
+                            <span class="text-[10px] text-zinc-500 uppercase">PORTFOLIO</span>
+                        </div>
+
+                        <!-- Photo with frame -->
+                        <div class="relative aspect-[3/4] rounded-xl overflow-hidden bg-black border border-surface-border">
+                            <img 
+                                src="assets/photos/photo_1_2026-09-02_16-59-41.jpg" 
+                                alt="Kost1al — Костя" 
+                                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-95 contrast-105"
+                                loading="eager"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none"></div>
+                            
+                            <!-- Overlay Info -->
+                            <div class="absolute bottom-3 left-3 right-3 p-3 rounded-lg bg-surface/90 backdrop-blur-md border border-surface-border text-xs font-mono">
+                                <div class="flex items-center justify-between text-white font-semibold">
+                                    <span>Kost1al (Костя)</span>
+                                    <span class="text-emerald-400 text-[10px] font-bold">ONLINE</span>
+                                </div>
+                                <div class="text-[11px] text-zinc-400 mt-0.5">
+                                    Lead Developer & Founder
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card footer stats -->
+                        <div class="grid grid-cols-3 gap-2 mt-3 pt-2 text-center font-mono text-[11px] text-zinc-400 border-t border-surface-border/60">
+                            <div>
+                                <span class="text-zinc-500 block text-[9px]">PROJECT</span>
+                                <span class="text-zinc-200 font-medium">Day X</span>
+                            </div>
+                            <div>
+                                <span class="text-zinc-500 block text-[9px]">ENGINE</span>
+                                <span class="text-zinc-200 font-medium">Forge 1.20</span>
+                            </div>
+                            <div>
+                                <span class="text-zinc-500 block text-[9px]">STATUS</span>
+                                <span class="text-emerald-400 font-medium">Building</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 2. ABOUT KOST1AL -->
+        <section id="about" class="py-20 border-t border-surface-border bg-surface/30">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                    
+                    <div class="lg:col-span-4">
+                        <div class="sticky top-24">
+                            <span class="text-xs font-mono uppercase tracking-widest text-zinc-400">01 / Profile</span>
+                            <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2 tracking-tight">О разработчике</h2>
+                            <div class="w-12 h-0.5 bg-emerald-500 mt-4 mb-6"></div>
+                            <p class="text-sm font-mono text-zinc-400 mb-6">Independent Engineer & Technical Lead</p>
+
+                            <!-- Mini profile photo card -->
+                            <div class="rounded-xl border border-surface-border bg-surface p-2.5 max-w-[260px] hidden lg:block">
+                                <div class="relative aspect-square rounded-lg overflow-hidden border border-surface-border">
+                                    <img 
+                                        src="assets/photos/photo_2_2026-09-02_16-59-41.jpg" 
+                                        alt="Kost1al" 
+                                        class="w-full h-full object-cover object-top brightness-90 hover:brightness-100 transition-all"
+                                        loading="lazy"
+                                    >
+                                    <div class="absolute bottom-2 left-2 right-2 bg-black/70 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-mono text-zinc-300 flex items-center justify-between">
+                                        <span>Kost1al</span>
+                                        <span class="text-emerald-400">● Lead</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-8 space-y-6">
+                        <div class="p-6 sm:p-8 rounded-xl border border-surface-border bg-surface/70 leading-relaxed text-zinc-300 space-y-4 text-base">
+                            <p>
+                                <strong class="text-white font-semibold">Kost1al (Костя)</strong> — независимый программист и разработчик собственных игровых и серверных платформ. 
+                            </p>
+                            <p>
+                                Специализируюсь на создании сложных, глубоко модифицированных решений на базе Minecraft (Forge), проектировании серверных ядер, сетевой интеграции и веб-интерфейсов.
+                            </p>
+                            <p>
+                                Главный фокус прямо сейчас — флагманский проект <strong class="text-white font-semibold">Day X Reforged</strong>. Я отвечаю не просто за концепт и геймдизайн, а за полную инженерную реализацию: от сборки кастомных модов и тонкой оптимизации JVM до инфраструктуры Linux-серверов и защищенного взаимодействия с веб-панелями.
+                            </p>
+                            <p class="text-sm text-zinc-400 pt-2 border-t border-surface-border font-mono">
+                                Второе направление — <a href="https://www.instagram.com/kost1al3d/?hl=en" target="_blank" rel="noopener noreferrer" class="text-zinc-200 underline hover:text-emerald-400 transition-colors">Kost1al 3D</a>: 3D-моделирование, прототипирование и производство кастомных изделий.
+                            </p>
+                        </div>
+
+                        <!-- Highlights Quick Specs -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <div class="p-4 rounded-lg border border-surface-border bg-surface text-center">
+                                <div class="text-xs font-mono text-zinc-400">Подход</div>
+                                <div class="text-sm font-bold text-white mt-1">Full Implementation</div>
+                            </div>
+                            <div class="p-4 rounded-lg border border-surface-border bg-surface text-center">
+                                <div class="text-xs font-mono text-zinc-400">Фокус</div>
+                                <div class="text-sm font-bold text-white mt-1">Day X Reforged</div>
+                            </div>
+                            <div class="p-4 rounded-lg border border-surface-border bg-surface text-center">
+                                <div class="text-xs font-mono text-zinc-400">Стек</div>
+                                <div class="text-sm font-bold text-white mt-1">Java / Web / Linux</div>
+                            </div>
+                            <div class="p-4 rounded-lg border border-surface-border bg-surface text-center">
+                                <div class="text-xs font-mono text-zinc-400">Формат</div>
+                                <div class="text-sm font-bold text-white mt-1">Engineering Lead</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SKILLS SECTION -->
+        <section id="skills" class="py-20 border-t border-surface-border">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <span class="text-xs font-mono uppercase tracking-widest text-zinc-400">02 / Competencies</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2 tracking-tight">Технические навыки</h2>
+                    </div>
+                    <p class="text-xs font-mono text-zinc-400 mt-2 md:mt-0">Практический стек, проверенный на продакшене</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    
+                    <!-- Skill 1 -->
+                    <div class="p-5 rounded-xl border border-surface-border bg-surface hover:border-zinc-500 transition-all group">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-mono text-zinc-400">01</span>
+                            <div class="w-2 h-2 rounded-full bg-zinc-600 group-hover:bg-emerald-400 transition-colors"></div>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-2">Programming</h3>
+                        <p class="text-xs text-zinc-400 leading-normal">
+                            Разработка прикладной логики, алгоритмов, модульных компонентов и backend-сервисов (Java, Python, C#, JS).
+                        </p>
+                    </div>
+
+                    <!-- Skill 2 -->
+                    <div class="p-5 rounded-xl border border-surface-border bg-surface hover:border-zinc-500 transition-all group">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-mono text-zinc-400">02</span>
+                            <div class="w-2 h-2 rounded-full bg-zinc-600 group-hover:bg-emerald-400 transition-colors"></div>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-2">Minecraft Server Dev</h3>
+                        <p class="text-xs text-zinc-400 leading-normal">
+                            Глубокая работа с Forge 1.20.1, сборками модов, оптимизацией тикрейта (TPS) и синхронизацией пакетов.
+                        </p>
+                    </div>
+
+                    <!-- Skill 3 -->
+                    <div class="p-5 rounded-xl border border-surface-border bg-surface hover:border-zinc-500 transition-all group">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-mono text-zinc-400">03</span>
+                            <div class="w-2 h-2 rounded-full bg-zinc-600 group-hover:bg-emerald-400 transition-colors"></div>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-2">Mod / Plugin Integration</h3>
+                        <p class="text-xs text-zinc-400 leading-normal">
+                            Тонкая связка модификаций, кастомные конфиги, скриптинг событий и исключение конфликтов пакетов.
+                        </p>
+                    </div>
+
+                    <!-- Skill 4 -->
+                    <div class="p-5 rounded-xl border border-surface-border bg-surface hover:border-zinc-500 transition-all group">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-mono text-zinc-400">04</span>
+                            <div class="w-2 h-2 rounded-full bg-zinc-600 group-hover:bg-emerald-400 transition-colors"></div>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-2">Server Configuration</h3>
+                        <p class="text-xs text-zinc-400 leading-normal">
+                            Настройка параметров генерации, JVM flags, безопасности, сетевого буфера и сохранения чанков.
+                        </p>
+                    </div>
+
+                    <!-- Skill 5 -->
+                    <div class="p-5 rounded-xl border border-surface-border bg-surface hover:border-zinc-500 transition-all group">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-mono text-zinc-400">05</span>
+                            <div class="w-2 h-2 rounded-full bg-zinc-600 group-hover:bg-emerald-400 transition-colors"></div>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-2">Web Development</h3>
+                        <p class="text-xs text-zinc-400 leading-normal">
+                            Создание сайтов, лендингов проектов, API-шлюзов для связи серверов с веб-панелями и базами данных.
+                        </p>
+                    </div>
+
+                    <!-- Skill 6 -->
+                    <div class="p-5 rounded-xl border border-surface-border bg-surface hover:border-zinc-500 transition-all group">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-mono text-zinc-400">06</span>
+                            <div class="w-2 h-2 rounded-full bg-zinc-600 group-hover:bg-emerald-400 transition-colors"></div>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-2">UI / Frontend Dev</h3>
+                        <p class="text-xs text-zinc-400 leading-normal">
+                            Адаптивная верстка, современные интерфейсы, Tailwind CSS, кастомные панели управления и дашборды.
+                        </p>
+                    </div>
+
+                    <!-- Skill 7 -->
+                    <div class="p-5 rounded-xl border border-surface-border bg-surface hover:border-zinc-500 transition-all group">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-mono text-zinc-400">07</span>
+                            <div class="w-2 h-2 rounded-full bg-zinc-600 group-hover:bg-emerald-400 transition-colors"></div>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-2">Linux / Server Admin</h3>
+                        <p class="text-xs text-zinc-400 leading-normal">
+                            Администрирование Ubuntu/Debian хостов, Docker, системный мониторинг, cron бэкапы, iptables.
+                        </p>
+                    </div>
+
+                    <!-- Skill 8 -->
+                    <div class="p-5 rounded-xl border border-surface-border bg-surface hover:border-zinc-500 transition-all group">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-mono text-zinc-400">08</span>
+                            <div class="w-2 h-2 rounded-full bg-zinc-600 group-hover:bg-emerald-400 transition-colors"></div>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-2">Project Development</h3>
+                        <p class="text-xs text-zinc-400 leading-normal">
+                            Полное ведение проекта от идеи и спецификации до тестирования, дизайна и запуска в эксплуатацию.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. FEATURED PROJECT: DAY X REFORGED (MAIN SHOWCASE) -->
+        <section id="featured" class="py-24 border-t border-surface-border bg-surface/40 relative">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header with Badges -->
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-4">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-zinc-900 border border-zinc-700 font-mono text-xs text-zinc-300 mb-3">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                            FLAGSHIP PROJECT
+                        </div>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+                            DAY X REFORGED
+                        </h2>
+                        <p class="text-base font-mono text-zinc-400 mt-2">
+                            Minecraft 1.20.1 Forge • Post-Apocalyptic Hardcore Survival
+                        </p>
+                    </div>
+
+                    <!-- Quick Spec Widget -->
+                    <div class="p-4 rounded-lg bg-surface border border-surface-border font-mono text-xs flex flex-wrap sm:flex-nowrap gap-6 items-center">
+                        <div>
+                            <div class="text-zinc-500 uppercase text-[10px]">Status</div>
+                            <div class="text-emerald-400 font-bold flex items-center gap-1.5 mt-0.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                                In Development
+                            </div>
+                        </div>
+                        <div class="h-6 w-px bg-surface-border hidden sm:block"></div>
+                        <div>
+                            <div class="text-zinc-500 uppercase text-[10px]">Platform</div>
+                            <div class="text-zinc-200 font-semibold mt-0.5">Minecraft 1.20.1</div>
+                        </div>
+                        <div class="h-6 w-px bg-surface-border hidden sm:block"></div>
+                        <div>
+                            <div class="text-zinc-500 uppercase text-[10px]">Engine</div>
+                            <div class="text-zinc-200 font-semibold mt-0.5">Forge Platform</div>
+                        </div>
+                        <div class="h-6 w-px bg-surface-border hidden sm:block"></div>
+                        <div>
+                            <div class="text-zinc-500 uppercase text-[10px]">Author & Dev</div>
+                            <div class="text-white font-bold mt-0.5">Kost1al</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Project Hero Box -->
+                <div class="rounded-2xl border border-surface-border bg-surface overflow-hidden terminal-glow mb-10">
+                    <div class="p-6 sm:p-10 border-b border-surface-border">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-7">
+                                <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">
+                                    Концепция и техническая суть
+                                </h3>
+                                <p class="text-zinc-300 leading-relaxed text-sm sm:text-base mb-4">
+                                    <strong>Day X Reforged</strong> — это атмосферный постапокалиптический проект с акцентом на суровое выживание, реалистичную баллистику, радиационные аномалии, проработанную лут-систему и динамические зараженные зоны.
+                                </p>
+                                <p class="text-zinc-400 leading-relaxed text-sm mb-6">
+                                    Проект строится на переработанной сборке Forge 1.20.1 с глубокой оптимизацией сетевой части, переписанными конфигами модов и кастомной балансировкой вооружения и выживания для обеспечения стабильного TPS даже при масштабных PvP/PvE ивентах.
+                                </p>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://t.me/DayXReforged" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20 text-xs font-mono font-semibold transition-all">
+                                        <span>Telegram Канал Day X</span>
+                                        <span>↗</span>
+                                    </a>
+                                    <a href="#gallery" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-lighter text-zinc-300 border border-surface-border hover:text-white text-xs font-mono transition-all">
+                                        <span>Смотреть визуальные материалы</span>
+                                        <span>↓</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Visual Banner in Showcase -->
+                            <div class="lg:col-span-5">
+                                <div class="relative rounded-xl overflow-hidden border border-surface-border aspect-video group cursor-pointer" onclick="openLightboxByFile('photo_6_2026-09-02_16-59-41.jpg')">
+                                    <img 
+                                        src="assets/photos/photo_6_2026-09-02_16-59-41.jpg" 
+                                        alt="Day X Reforged Preview" 
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90"
+                                        loading="lazy"
+                                    >
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                                    <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono">
+                                        <span class="text-white font-semibold flex items-center gap-1.5">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                            Day X Reforged Engine
+                                        </span>
+                                        <span class="text-zinc-400 bg-black/60 px-2 py-0.5 rounded text-[10px]">Клик для зума 🔍</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5 Modules of Development Work -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x border-b border-surface-border bg-[#0a0b0d]">
+                        
+                        <div class="p-6 sm:p-8 space-y-3">
+                            <div class="font-mono text-xs text-zinc-500 flex items-center justify-between">
+                                <span>MODULE // 01</span>
+                                <span class="text-zinc-400">Core</span>
+                            </div>
+                            <h4 class="text-base font-bold text-white">Development</h4>
+                            <p class="text-xs text-zinc-400 leading-relaxed">
+                                Архитектура клиент-серверной сборки, модификация конфигов, интеграция кастомных скриптов событий и механик лута.
+                            </p>
+                            <ul class="text-xs font-mono text-zinc-500 space-y-1 pt-2">
+                                <li>• Forge 1.20.1 core</li>
+                                <li>• Custom event scripting</li>
+                                <li>• Balancing & loot-tables</li>
+                            </ul>
+                        </div>
+
+                        <div class="p-6 sm:p-8 space-y-3">
+                            <div class="font-mono text-xs text-zinc-500 flex items-center justify-between">
+                                <span>MODULE // 02</span>
+                                <span class="text-zinc-400">Infra</span>
+                            </div>
+                            <h4 class="text-base font-bold text-white">Server Infrastructure</h4>
+                            <p class="text-xs text-zinc-400 leading-relaxed">
+                                Настройка выделенного Linux-сервера, профилирование производительности (Spark/Aikar flags), анти-DDoS и защита портов.
+                            </p>
+                            <ul class="text-xs font-mono text-zinc-500 space-y-1 pt-2">
+                                <li>• Linux kernel tuning</li>
+                                <li>• Spark TPS & memory profiling</li>
+                                <li>• Automated backup pipeline</li>
+                            </ul>
+                        </div>
+
+                        <div class="p-6 sm:p-8 space-y-3">
+                            <div class="font-mono text-xs text-zinc-500 flex items-center justify-between">
+                                <span>MODULE // 03</span>
+                                <span class="text-zinc-400">Game Mechanics</span>
+                            </div>
+                            <h4 class="text-base font-bold text-white">Gameplay & Balance</h4>
+                            <p class="text-xs text-zinc-400 leading-relaxed">
+                                Кастомизация поведения зараженных, радиационных зон, баллистики оружия, спавна аирдропов и механик строительства баз.
+                            </p>
+                            <ul class="text-xs font-mono text-zinc-500 space-y-1 pt-2">
+                                <li>• Survival & infection systems</li>
+                                <li>• Firearm balance & recoil</li>
+                                <li>• Dynamic radioactive zones</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- Bottom 2 Modules -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x border-b border-surface-border bg-[#0a0b0d]">
+                        
+                        <div class="p-6 sm:p-8 space-y-3">
+                            <div class="font-mono text-xs text-zinc-500 flex items-center justify-between">
+                                <span>MODULE // 04</span>
+                                <span class="text-zinc-400">Front & API</span>
+                            </div>
+                            <h4 class="text-base font-bold text-white">Web & Client Interface</h4>
+                            <p class="text-xs text-zinc-400 leading-relaxed">
+                                Информационный веб-ресурс, статус серверов, интеграция с лаунчером и базами данных для мониторинга игроков.
+                            </p>
+                        </div>
+
+                        <div class="p-6 sm:p-8 space-y-3">
+                            <div class="font-mono text-xs text-zinc-500 flex items-center justify-between">
+                                <span>MODULE // 05</span>
+                                <span class="text-zinc-400">Ecosystem</span>
+                            </div>
+                            <h4 class="text-base font-bold text-white">Integration & Ecosystem</h4>
+                            <p class="text-xs text-zinc-400 leading-relaxed">
+                                Синхронизация Discord-ботов с игровым чатом, вебхуки оповещений о вайпах и ивентах, системы аналитики активности.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Project Terminal Log Display -->
+                    <div class="p-4 sm:p-6 bg-black font-mono text-xs text-zinc-400 flex flex-col gap-2">
+                        <div class="flex items-center justify-between pb-2 border-b border-zinc-800">
+                            <span class="text-zinc-500">kost1al@dayx-reforged:~$ project-info --verbose</span>
+                            <span class="text-[10px] text-zinc-600">BUILD 1.20.1-DEV</span>
+                        </div>
+                        <div class="space-y-1 text-zinc-400 text-[11px] sm:text-xs">
+                            <p><span class="text-emerald-400">[OK]</span> Core engine: Forge 1.20.1 initialized</p>
+                            <p><span class="text-emerald-400">[OK]</span> Modpack consistency verified: Zero hard-crashes detected in testing sandbox</p>
+                            <p><span class="text-emerald-400">[OK]</span> Lead developer: Kost1al (Architecture, Setup, Game balance, Deployment)</p>
+                            <p><span class="text-zinc-500">[INFO]</span> Target status: Closed testing -> Open Alpha pipeline</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. PROJECT GALLERY & MEDIA (WITH REAL PHOTOS & LIGHTBOX) -->
+        <section id="gallery" class="py-20 border-t border-surface-border">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                    <div>
+                        <span class="text-xs font-mono uppercase tracking-widest text-zinc-400">03 / Visuals</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2 tracking-tight">Галерея проектов & Архив</h2>
+                    </div>
+                    <p class="text-xs font-mono text-zinc-400 mt-2 md:mt-0">16 фотоматериалов: Day X, 3D и разработка</p>
+                </div>
+
+                <!-- 3 Highlights Cards with Real Photos -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+                    
+                    <!-- Gallery Item 1: Day X Atmosphere -->
+                    <div 
+                        class="group relative rounded-xl overflow-hidden border border-surface-border bg-surface aspect-video flex flex-col justify-end p-5 cursor-pointer card-glow transition-all"
+                        onclick="openLightboxByFile('photo_3_2026-09-02_16-59-41.jpg')"
+                    >
+                        <img 
+                            src="assets/photos/photo_3_2026-09-02_16-59-41.jpg" 
+                            alt="Day X Reforged Post-Apocalypse"
+                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-75 contrast-110"
+                            loading="lazy"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-zinc-950/70 to-transparent z-10"></div>
+
+                        <div class="relative z-20">
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950/70 text-emerald-400 backdrop-blur-sm border border-emerald-700/40">Atmosphere</span>
+                            <h3 class="text-base font-bold text-white mt-2">Day X Reforged Post-Apocalypse</h3>
+                            <p class="text-xs text-zinc-300 mt-1">Визуальная эстетика заброшенных городов и динамического окружения</p>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 2: Kost1al 3D Viewport -->
+                    <div 
+                        class="group relative rounded-xl overflow-hidden border border-surface-border bg-surface aspect-video flex flex-col justify-end p-5 cursor-pointer card-glow transition-all"
+                        onclick="openLightboxByFile('photo_4_2026-09-02_16-59-41.jpg')"
+                    >
+                        <img 
+                            src="assets/photos/photo_4_2026-09-02_16-59-41.jpg" 
+                            alt="Kost1al 3D Production"
+                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-75 contrast-110"
+                            loading="lazy"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-zinc-950/70 to-transparent z-10"></div>
+
+                        <div class="relative z-20">
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950/70 text-cyan-400 backdrop-blur-sm border border-cyan-700/40">Render & 3D</span>
+                            <h3 class="text-base font-bold text-white mt-2">Kost1al 3D Production</h3>
+                            <p class="text-xs text-zinc-300 mt-1">3D-печать, физические модели и прототипы изделий</p>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 3: Server Architecture Map -->
+                    <div 
+                        class="group relative rounded-xl overflow-hidden border border-surface-border bg-surface aspect-video flex flex-col justify-end p-5 cursor-pointer card-glow transition-all"
+                        onclick="openLightboxByFile('photo_5_2026-09-02_16-59-41.jpg')"
+                    >
+                        <img 
+                            src="assets/photos/photo_5_2026-09-02_16-59-41.jpg" 
+                            alt="Server Architecture & Hardware"
+                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-75 contrast-110"
+                            loading="lazy"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-zinc-950/70 to-transparent z-10"></div>
+
+                        <div class="relative z-20">
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 backdrop-blur-sm border border-zinc-700">Architecture</span>
+                            <h3 class="text-base font-bold text-white mt-2">Server & Hardware Setup</h3>
+                            <p class="text-xs text-zinc-300 mt-1">Серверная инфраструктура, ядро вычислений и сетевой стек</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Full Photo Grid (All 16 Photos) -->
+                <div class="border border-surface-border rounded-2xl bg-surface/60 p-6 sm:p-8">
+                    <div class="flex items-center justify-between mb-6 pb-4 border-b border-surface-border">
+                        <div class="flex items-center gap-2 font-mono text-xs text-zinc-400">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                            <span>ПОЛНЫЙ АРХИВ ФОТОГРАФИЙ (16)</span>
+                        </div>
+                        <span class="text-xs font-mono text-zinc-500">Нажмите на фото для зума</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4" id="photo-grid">
+                        <!-- Rendered by JS or static fallback below -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 6. OTHER PROJECTS -->
+        <section id="projects" class="py-20 border-t border-surface-border bg-surface/20">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                    <div>
+                        <span class="text-xs font-mono uppercase tracking-widest text-zinc-400">04 / Portfolio</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2 tracking-tight">Все проекты</h2>
+                    </div>
+                    <p class="text-xs font-mono text-zinc-400 mt-2 md:mt-0">Архитектура портфолио готова к масштабированию</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Project 1: Day X Reforged -->
+                    <div class="p-6 rounded-xl border border-surface-border bg-surface flex flex-col justify-between hover:border-zinc-500 transition-all group">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-800/60 font-semibold">Flagship</span>
+                                <span class="text-xs font-mono text-zinc-400">Minecraft 1.20.1</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Day X Reforged</h3>
+                            <p class="text-xs text-zinc-400 leading-relaxed mb-6">
+                                Главный проект. Постапокалиптический сервер выживания на Forge 1.20.1 с авторским балансом, глубокой модификацией и сетевой оптимизацией.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-surface-border flex items-center justify-between">
+                            <span class="text-xs font-mono text-zinc-400">Kost1al</span>
+                            <a href="https://t.me/DayXReforged" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-white hover:text-emerald-400 flex items-center gap-1 font-semibold transition-colors">
+                                <span>Канал в TG</span>
+                                <span>↗</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Kost1al 3D -->
+                    <div class="p-6 rounded-xl border border-surface-border bg-surface flex flex-col justify-between hover:border-zinc-500 transition-all group">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-surface-border">3D Printing / Shop</span>
+                                <span class="text-xs font-mono text-zinc-400">Production</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Kost1al 3D</h3>
+                            <p class="text-xs text-zinc-400 leading-relaxed mb-6">
+                                Направление по 3D-печати и моделированию: создание фигурок, брелоков, кастомных деталей и физических изделий на заказ.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-surface-border flex items-center justify-between">
+                            <span class="text-xs font-mono text-zinc-400">Kost1al</span>
+                            <a href="https://www.instagram.com/kost1al3d/?hl=en" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-white hover:text-cyan-400 flex items-center gap-1 font-semibold transition-colors">
+                                <span>Instagram</span>
+                                <span>↗</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Personal / Experimental Projects -->
+                    <div class="p-6 rounded-xl border border-surface-border bg-surface flex flex-col justify-between hover:border-zinc-500 transition-all group">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-surface-border">R&D / Backend</span>
+                                <span class="text-xs font-mono text-zinc-400">Scripts & Tools</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-zinc-100 transition-colors">Tools & Integrations</h3>
+                            <p class="text-xs text-zinc-400 leading-relaxed mb-6">
+                                Набор кастомных утилит: парсеры конфигураций, скрипты автоматического развертывания, Telegram/Discord боты и веб-дашборды.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-surface-border flex items-center justify-between">
+                            <span class="text-xs font-mono text-zinc-400">Kost1al</span>
+                            <a href="https://github.com/kost1al-source" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-white hover:underline flex items-center gap-1 font-semibold">
+                                <span>GitHub</span>
+                                <span>↗</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. DEVELOPMENT TIMELINE -->
+        <section id="timeline" class="py-20 border-t border-surface-border">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <span class="text-xs font-mono uppercase tracking-widest text-zinc-400">05 / Process</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2 tracking-tight">Цикл разработки</h2>
+                    </div>
+                    <p class="text-xs font-mono text-zinc-400 mt-2 md:mt-0">Системный подход к запуску любого проекта</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
+                    
+                    <!-- Step 1 -->
+                    <div class="p-5 rounded-xl border border-surface-border bg-surface relative">
+                        <div class="font-mono text-xs text-zinc-400 mb-2">STEP 01</div>
+                        <h3 class="text-base font-bold text-white mb-2">IDEA</h3>
+                        <p class="text-xs text-zinc-400 leading-relaxed">
+                            Анализ концепта, расчет геймплейного цикла, подбор ядра и составление технических спецификаций.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="p-5 rounded-xl border border-zinc-700 bg-surface relative">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="font-mono text-xs text-emerald-400">STEP 02 — ACTIVE</div>
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-2">DEVELOPMENT</h3>
+                        <p class="text-xs text-zinc-400 leading-relaxed">
+                            Написание кода, сборка модов, конфигурирование окружения Linux и настройка межсерверных мостов.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="p-5 rounded-xl border border-surface-border bg-surface relative">
+                        <div class="font-mono text-xs text-zinc-400 mb-2">STEP 03</div>
+                        <h3 class="text-base font-bold text-white mb-2">TESTING</h3>
+                        <p class="text-xs text-zinc-400 leading-relaxed">
+                            Стресс-тестирование TPS, поиск утечек памяти (memory leak check), закрытый тест баланса с фокус-группой.
+                        </p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="p-5 rounded-xl border border-surface-border bg-surface relative">
+                        <div class="font-mono text-xs text-zinc-400 mb-2">STEP 04</div>
+                        <h3 class="text-base font-bold text-white mb-2">RELEASE</h3>
+                        <p class="text-xs text-zinc-400 leading-relaxed">
+                            Публичный запуск, постоянный мониторинг стабильности, выпуск хотфиксов и контентных обновлений.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. GITHUB BLOCK -->
+        <section class="py-12 border-t border-surface-border bg-surface/60">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="p-6 sm:p-8 rounded-2xl border border-surface-border bg-surface flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-surface-lighter border border-surface-border flex items-center justify-center text-white shrink-0">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">GitHub: Projects / Code / Development</h3>
+                            <p class="text-xs text-zinc-400 font-mono mt-0.5">Публичные репозитории, скрипты и исходный код проектов @kost1al-source</p>
+                        </div>
+                    </div>
+                    <a href="https://github.com/kost1al-source" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-lg bg-zinc-100 hover:bg-white text-zinc-950 font-mono text-xs font-bold transition-all shrink-0">
+                        OPEN GITHUB
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. CONTACT SECTION -->
+        <section id="contact" class="py-24 border-t border-surface-border">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="max-w-3xl">
+                    <span class="text-xs font-mono uppercase tracking-widest text-zinc-400">06 / Connect</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 tracking-tight">Связаться с Kost1al</h2>
+                    <p class="text-sm sm:text-base text-zinc-400 mt-3 leading-relaxed">
+                        Открыт для предложений по разработке, техническому сотрудничеству, интеграциям и вопросам по серверу Day X Reforged.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-10">
+                    
+                    <!-- Contact 1: Discord -->
+                    <div class="p-6 rounded-xl border border-surface-border bg-surface flex flex-col justify-between group hover:border-zinc-500 transition-all">
+                        <div>
+                            <div class="text-xs font-mono text-zinc-400 mb-2">Direct Message</div>
+                            <h3 class="text-lg font-bold text-white">Discord</h3>
+                            <p class="text-xs text-zinc-400 mt-1 font-mono">@kost1al</p>
+                        </div>
+                        <button onclick="copyToClipboard('kost1al', this)" class="mt-6 w-full py-2 px-3 rounded bg-surface-lighter hover:bg-zinc-800 text-xs font-mono text-zinc-300 hover:text-white border border-surface-border transition-all flex items-center justify-center gap-2">
+                            <span>Скопировать логин</span>
+                        </button>
+                    </div>
+
+                    <!-- Contact 2: Telegram -->
+                    <div class="p-6 rounded-xl border border-surface-border bg-surface flex flex-col justify-between group hover:border-zinc-500 transition-all">
+                        <div>
+                            <div class="text-xs font-mono text-zinc-400 mb-2">Messenger</div>
+                            <h3 class="text-lg font-bold text-white">Telegram</h3>
+                            <p class="text-xs text-zinc-400 mt-1 font-mono">@kost1al</p>
+                        </div>
+                        <a href="https://t.me/DayXReforged" target="_blank" rel="noopener noreferrer" class="mt-6 w-full py-2 px-3 rounded bg-surface-lighter hover:bg-zinc-800 text-xs font-mono text-zinc-300 hover:text-white border border-surface-border transition-all flex items-center justify-center gap-2 text-center">
+                            <span>Написать в Telegram</span>
+                        </a>
+                    </div>
+
+                    <!-- Contact 3: Day X Project Community -->
+                    <div class="p-6 rounded-xl border border-surface-border bg-surface flex flex-col justify-between group hover:border-zinc-500 transition-all">
+                        <div>
+                            <div class="text-xs font-mono text-zinc-400 mb-2">Project Community</div>
+                            <h3 class="text-lg font-bold text-white">Day X Reforged</h3>
+                            <p class="text-xs text-zinc-400 mt-1 font-mono">t.me/DayXReforged</p>
+                        </div>
+                        <a href="https://t.me/DayXReforged" target="_blank" rel="noopener noreferrer" class="mt-6 w-full py-2 px-3 rounded bg-surface-lighter hover:bg-zinc-800 text-xs font-mono text-zinc-300 hover:text-white border border-surface-border transition-all flex items-center justify-center gap-2 text-center">
+                            <span>Инфо о проекте ↗</span>
+                        </a>
+                    </div>
+
+                    <!-- Contact 4: Email -->
+                    <div class="p-6 rounded-xl border border-surface-border bg-surface flex flex-col justify-between group hover:border-zinc-500 transition-all">
+                        <div>
+                            <div class="text-xs font-mono text-zinc-400 mb-2">Direct Mail</div>
+                            <h3 class="text-lg font-bold text-white">Email</h3>
+                            <p class="text-xs text-zinc-400 mt-1 font-mono truncate">babakkosta666@gmail.com</p>
+                        </div>
+                        <a href="mailto:babakkosta666@gmail.com" class="mt-6 w-full py-2 px-3 rounded bg-surface-lighter hover:bg-zinc-800 text-xs font-mono text-zinc-300 hover:text-white border border-surface-border transition-all flex items-center justify-center gap-2 text-center">
+                            <span>Отправить Email ↗</span>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 10. FOOTER -->
+    <footer class="border-t border-surface-border bg-surface py-10 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                
+                <div class="flex items-center gap-3">
+                    <span class="font-mono font-bold text-white text-base">Kost1al</span>
+                    <span class="text-zinc-600">•</span>
+                    <span class="text-xs font-mono text-zinc-400">Programmer & Developer (Костя)</span>
+                </div>
+
+                <div class="flex items-center gap-6 text-xs font-mono text-zinc-400">
+                    <a href="#hero" class="hover:text-white transition-colors">Вверх ↑</a>
+                    <a href="#featured" class="hover:text-white transition-colors">Day X Reforged</a>
+                    <a href="#gallery" class="hover:text-white transition-colors">Галерея</a>
+                    <a href="https://github.com/kost1al-source" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">GitHub</a>
+                    <a href="#contact" class="hover:text-white transition-colors">Связь</a>
+                </div>
+
+                <div class="text-xs font-mono text-zinc-400">
+                    © Kost1al 2026
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- 11. LIGHTBOX MODAL -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col items-center justify-between p-4 sm:p-6" aria-hidden="true">
+        <!-- Lightbox Header -->
+        <div class="w-full max-w-5xl flex items-center justify-between z-10">
+            <div class="flex items-center gap-3 font-mono text-xs text-zinc-400">
+                <span id="lightbox-index" class="text-white font-bold bg-surface-lighter px-2.5 py-1 rounded border border-surface-border">01 / 16</span>
+                <span id="lightbox-caption" class="truncate max-w-xs sm:max-w-md text-zinc-300"></span>
+            </div>
+            <button id="lightbox-close" aria-label="Закрыть" class="p-2 rounded-lg bg-surface border border-surface-border hover:bg-surface-lighter text-zinc-300 hover:text-white transition-colors flex items-center gap-1 text-xs font-mono">
+                <span>ESC</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <!-- Lightbox Center Content -->
+        <div class="relative w-full max-w-5xl flex-1 flex items-center justify-center my-2 select-none overflow-hidden">
+            <button id="lightbox-prev" aria-label="Предыдущее фото" class="absolute left-2 sm:left-4 z-20 p-3 rounded-full bg-surface/80 border border-surface-border hover:bg-surface text-white hover:scale-110 transition-all backdrop-blur-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+
+            <img id="lightbox-img" src="" alt="Kost1al Portfolio" class="max-h-[80vh] max-w-full rounded-xl object-contain shadow-2xl border border-surface-border">
+
+            <button id="lightbox-next" aria-label="Следующее фото" class="absolute right-2 sm:right-4 z-20 p-3 rounded-full bg-surface/80 border border-surface-border hover:bg-surface text-white hover:scale-110 transition-all backdrop-blur-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+
+        <!-- Lightbox Bottom Footer / Hints -->
+        <div class="w-full max-w-5xl flex items-center justify-between font-mono text-[11px] text-zinc-500 pt-2 border-t border-zinc-800">
+            <span>Kost1al Visual Archive</span>
+            <span>Используйте стрелки клавиатуры ← →</span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
